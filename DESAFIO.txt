@@ -1,0 +1,117 @@
+
+DESAFIO 1
+    OBS: Verificar o arquivo cadastrarUser.php
+
+    $idUsuarioInserido - Variavél com o valor do id do usuário.
+
+    DESAFIOOOOO
+
+    Você terá que inserir o resto dos dados na tabela 'Telefone' e 'Endereço'.
+    OBS: essa variavél $idUsuarioInserido contém o id do usuário já inserido que terá que ir 
+no campo na tabela telefone e endereço
+
+    Tabela Endereço - dados: 
+        rua, bairro, cidade, uf e numero 
+        vindos por parametro do formulario.
+
+    Tabela Telefone - dados: 
+        tel e cel 
+        vindos por parametro do formulario.
+
+
+
+
+
+
+
+
+/* ********************************************************************************************************************************* */
+
+
+
+
+DESAFIO 2
+
+    Montar uma query que traga todos os usuários com seu determinado cadastro.
+
+    Ex: Usuário 1 com seus telefones e endereço
+        Usuário 2 com seus telefones e endereço
+        Usuário 3 com seus telefones e endereço
+
+
+
+
+
+
+/* ********************************************************************************************************************************* */
+
+
+
+
+
+
+RODAR ESSAS QUERYS ABAIXO EM SEU BANCO DE DADOS 
+    OBS: Rodar essas querys abaixo antes de começar os testes 
+    OBS-2: se atentar para o banco de dados, se tiver usando postgres é para rodar o create table, insert com a estrutura do postgress
+
+
+
+CREATE DATABASE IF NOT EXISTS `teste` ;
+USE `teste`;
+
+
+-- Copiando estrutura para tabela fernando.endereco
+CREATE TABLE IF NOT EXISTS `endereco` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
+  `rua` varchar(50) NOT NULL,
+  `bairro` varchar(50) NOT NULL,
+  `cidade` varchar(50) NOT NULL,
+  `uf` varchar(2) NOT NULL,
+  `numero` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+/*!40000 ALTER TABLE `endereco` DISABLE KEYS */;
+INSERT INTO `endereco` (`id`, `id_usuario`, `rua`, `bairro`, `cidade`, `uf`, `numero`) VALUES
+	(1, 5, 'Um', 'Niteroi', 'Niteroi', 'RJ', 123),
+	(2, 6, 'Dois', 'Niteroi', 'Niteroi', 'RJ', 456),
+	(3, 7, 'Tres', 'Niteroi', 'Niteroi', 'RJ', 789);
+/*!40000 ALTER TABLE `endereco` ENABLE KEYS */;
+
+
+-- Copiando estrutura para tabela fernando.telefone
+CREATE TABLE IF NOT EXISTS `telefone` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
+  `tel` varchar(50) NOT NULL,
+  `cel` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+/*!40000 ALTER TABLE `telefone` DISABLE KEYS */;
+INSERT INTO `telefone` (`id`, `id_usuario`, `tel`, `cel`) VALUES
+	(1, 5, '21 1111 1111', '21 9 2222 2222'),
+	(2, 6, '21 9999 9999', '21 9 8888 8888'),
+	(3, 7, '21 7777 7777', '21 9 6666 6666');
+/*!40000 ALTER TABLE `telefone` ENABLE KEYS */;
+
+
+-- Copiando estrutura para tabela fernando.usuario
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NOT NULL,
+  `idade` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `cpf` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `cpf` (`cpf`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` (`id`, `nome`, `idade`, `email`, `cpf`) VALUES
+	(5, 'Edmo', 20, 'edmo@hotmail.com', '11111111111'),
+	(6, 'Max', 21, 'max@hotmail.com', '22222222222'),
+	(7, 'Fernando', 23, 'fernando@hotmail.com', '33333333333');
