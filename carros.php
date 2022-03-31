@@ -28,7 +28,7 @@ if ($conn->connect_error) {
     <center>
 
       <br/>
-      <h2>Carros</h2>
+      <h2>Buscar Carros</h2>
       <br/>
 
       <!-- 
